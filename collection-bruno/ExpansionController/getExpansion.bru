@@ -1,0 +1,20 @@
+meta {
+  name: getExpansion
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8080/v1/expansions/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

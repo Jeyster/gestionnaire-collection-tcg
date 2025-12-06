@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "gestionnaire-collection-tcg",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
