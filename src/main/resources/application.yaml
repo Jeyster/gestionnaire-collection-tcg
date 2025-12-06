@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: gestionnaire-collection-tcg
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cmscraper
+    username: cmscraper
+    password: cmscraper
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 10000
+      connection-timeout: 20000
+      pool-name: HikariPoolCMScraper
+
+  jpa:
+    hibernate:
+      ddl-auto: none    # IMPORTANT : n'écrase pas tes tables !
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+
+  # Encodage
+  mvc:
+    charset:
+      default: UTF-8
+
