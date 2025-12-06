@@ -1,0 +1,20 @@
+meta {
+  name: getItemType
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8080/v1/item-types/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
