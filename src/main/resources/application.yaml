@@ -28,3 +28,11 @@ spring:
     charset:
       default: UTF-8
 
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
+

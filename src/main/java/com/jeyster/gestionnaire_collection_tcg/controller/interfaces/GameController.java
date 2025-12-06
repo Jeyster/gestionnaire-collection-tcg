@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@RequestMapping("/game")
+@RequestMapping("/v1/games")
 public interface GameController {
 
     @GetMapping
