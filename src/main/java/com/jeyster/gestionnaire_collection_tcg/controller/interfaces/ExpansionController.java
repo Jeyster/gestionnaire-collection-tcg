@@ -9,16 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@RequestMapping("/v1/games")
-public interface GameController {
+@RequestMapping("/v1/expansions")
+public interface ExpansionController {
 
     @GetMapping
-    ResponseEntity<List<GameDto>> getGames();
+    ResponseEntity<List<ExpansionDto>> getExpansions();
 
     @GetMapping("/{id}")
-    ResponseEntity<GameDto> getGame(@PathVariable Long id);
-
-    @GetMapping("/{id}/expansions")
-    ResponseEntity<List<ExpansionDto>> getGameExpansions(@PathVariable Long id);
+    ResponseEntity<ExpansionDto> getExpansion(@PathVariable Long id);
 
 }
