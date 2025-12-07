@@ -33,4 +33,6 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "expansion_id")
     private Expansion expansion;
+
+    private String complement;
 }
