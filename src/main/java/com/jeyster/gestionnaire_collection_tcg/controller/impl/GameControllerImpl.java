@@ -3,6 +3,7 @@ package com.jeyster.gestionnaire_collection_tcg.controller.impl;
 import com.jeyster.gestionnaire_collection_tcg.controller.interfaces.GameController;
 import com.jeyster.gestionnaire_collection_tcg.dto.ExpansionDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.GameDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.ItemTypeDto;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.GameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,11 @@ public class GameControllerImpl implements GameController {
     @Override
     public ResponseEntity<List<ExpansionDto>> getGameExpansions(Long id) {
         return ResponseEntity.ok(gameService.getGameExpansions(id));
+    }
+
+    @Override
+    public ResponseEntity<List<ItemTypeDto>> getGameItemTypes(Long id) {
+        return ResponseEntity.ok(gameService.getGameItemTypes(id));
     }
 }
 

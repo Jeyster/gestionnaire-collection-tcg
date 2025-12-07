@@ -2,6 +2,7 @@ package com.jeyster.gestionnaire_collection_tcg.controller.interfaces;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.ExpansionDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.GameDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.ItemTypeDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,5 +21,8 @@ public interface GameController {
 
     @GetMapping("/{id}/expansions")
     ResponseEntity<List<ExpansionDto>> getGameExpansions(@PathVariable Long id);
+
+    @GetMapping("/{id}/item-types")
+    ResponseEntity<List<ItemTypeDto>> getGameItemTypes(@PathVariable Long id);
 
 }

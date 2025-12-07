@@ -2,10 +2,13 @@ package com.jeyster.gestionnaire_collection_tcg.service.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.ExpansionDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.GameDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.ItemTypeDto;
 import com.jeyster.gestionnaire_collection_tcg.mapper.ExpansionMapper;
 import com.jeyster.gestionnaire_collection_tcg.mapper.GameMapper;
+import com.jeyster.gestionnaire_collection_tcg.mapper.ItemTypeMapper;
 import com.jeyster.gestionnaire_collection_tcg.repository.ExpansionRepository;
 import com.jeyster.gestionnaire_collection_tcg.repository.GameRepository;
+import com.jeyster.gestionnaire_collection_tcg.repository.ItemTypeRepository;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.GameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,8 +21,10 @@ public class GameServiceImpl implements GameService {
 
     private final GameRepository gameRepository;
     private final ExpansionRepository expansionRepository;
+    private final ItemTypeRepository itemTypeRepository;
     private final GameMapper gameMapper;
     private final ExpansionMapper expansionMapper;
+    private final ItemTypeMapper itemTypeMapper;
 
     @Override
     public List<GameDto> getGames() {
@@ -33,6 +38,11 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public List<ExpansionDto> getGameExpansions(Long id) {
-        return expansionMapper.toDtoList(expansionRepository.findByGameId(id));
+        return expansionMapper.toDtoList(expansionRepository.findAllByGameId(id));
+    }
+
+    @Override
+    public List<ItemTypeDto> getGameItemTypes(Long id) {
+        return itemTypeMapper.toDtoList(itemTypeRepository.findDistinctByItems_Game_Id(id));
     }
 }

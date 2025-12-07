@@ -1,0 +1,20 @@
+meta {
+  name: getGameItemTypes
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:8080/v1/games/:id/item-types
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 5
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
