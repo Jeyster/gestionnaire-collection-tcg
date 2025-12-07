@@ -1,0 +1,20 @@
+meta {
+  name: getItemPriceHistory
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8080/v1/item-price-histories/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

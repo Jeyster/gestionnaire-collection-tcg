@@ -6,7 +6,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "price_history")
+@Table(name = "item_price_history")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,7 +22,7 @@ public class ItemPriceHistory {
     @JoinColumn(name = "item_id")
     private Item item;
 
-    private Double avgPrice;
+    private Double averagePrice;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
