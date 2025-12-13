@@ -41,7 +41,13 @@ public class UserItemServiceImpl implements UserItemService {
         User user = userRepository.findById(createUserItemDto.userId()).orElse(null);
         Item item = itemRepository.findById(createUserItemDto.itemId()).orElse(null);
 
-        UserItem userItem = new UserItem(user, item, createUserItemDto.purchasePrice(), createUserItemDto.purchaseDate());
+        UserItem userItem = new UserItem(
+                user,
+                item,
+                createUserItemDto.purchasePrice(),
+                createUserItemDto.purchaseDate(),
+                createUserItemDto.comment()
+        );
         return userItemMapper.toDto(userItemRepository.save(userItem));
     }
 }

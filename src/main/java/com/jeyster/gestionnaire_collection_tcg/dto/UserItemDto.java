@@ -9,5 +9,6 @@ public record UserItemDto(
         Double purchasePrice,
         LocalDateTime purchaseDate,
         Double sellingPrice,
-        LocalDateTime sellingOrOpeningDate
+        LocalDateTime sellingOrOpeningDate,
+        String comment
 ) {}

@@ -34,10 +34,19 @@ public class UserItem {
 
     private LocalDateTime sellingOrOpeningDate;
 
-    public UserItem(User user, Item item, Double purchasePrice, LocalDateTime purchaseDate) {
+    private String comment;
+
+    public UserItem(
+            User user,
+            Item item,
+            Double purchasePrice,
+            LocalDateTime purchaseDate,
+            String comment
+    ) {
         this.user = user;
         this.item = item;
         this.purchasePrice = purchasePrice;
         this.purchaseDate = purchaseDate;
+        this.comment = comment;
     }
 }

@@ -8,5 +8,6 @@ public record CreateUserItemDto(
         @NotNull Long userId,
         @NotNull Long itemId,
         Double purchasePrice,
-        LocalDateTime purchaseDate
+        LocalDateTime purchaseDate,
+        String comment
 ) {}
