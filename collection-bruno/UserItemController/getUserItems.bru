@@ -1,0 +1,21 @@
+meta {
+  name: getUserItems
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8080/v1/user-items?userId=1&itemId=2
+  body: none
+  auth: inherit
+}
+
+params:query {
+  userId: 1
+  itemId: 2
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
