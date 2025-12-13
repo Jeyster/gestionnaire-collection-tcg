@@ -1,0 +1,25 @@
+meta {
+  name: createUserItem
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/v1/user-items
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "userId": 1,
+    "itemId": 2,
+    "purchasePrice": 400.0,
+    "purchaseDate": "2024-02-01T00:00:00"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

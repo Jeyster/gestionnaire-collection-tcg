@@ -34,4 +34,10 @@ public class UserItem {
 
     private LocalDateTime sellingOrOpeningDate;
 
+    public UserItem(User user, Item item, Double purchasePrice, LocalDateTime purchaseDate) {
+        this.user = user;
+        this.item = item;
+        this.purchasePrice = purchasePrice;
+        this.purchaseDate = purchaseDate;
+    }
 }
