@@ -1,6 +1,8 @@
 package com.jeyster.gestionnaire_collection_tcg.service.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.CreateUserItemDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.OpenUserItemDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.SellUserItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.UserItemDto;
 import com.jeyster.gestionnaire_collection_tcg.mapper.UserItemMapper;
 import com.jeyster.gestionnaire_collection_tcg.model.Item;
@@ -9,7 +11,6 @@ import com.jeyster.gestionnaire_collection_tcg.model.UserItem;
 import com.jeyster.gestionnaire_collection_tcg.repository.ItemRepository;
 import com.jeyster.gestionnaire_collection_tcg.repository.UserItemRepository;
 import com.jeyster.gestionnaire_collection_tcg.repository.UserRepository;
-import com.jeyster.gestionnaire_collection_tcg.repository.specifications.ItemSpecifications;
 import com.jeyster.gestionnaire_collection_tcg.repository.specifications.UserItemSpecifications;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.UserItemService;
 import lombok.RequiredArgsConstructor;
@@ -49,5 +50,35 @@ public class UserItemServiceImpl implements UserItemService {
                 createUserItemDto.comment()
         );
         return userItemMapper.toDto(userItemRepository.save(userItem));
+    }
+
+    @Override
+    public UserItemDto sellUserItem(Long id, SellUserItemDto sellUserItemDto) {
+        UserItem userItem = userItemRepository.findById(id).orElse(null);
+        if (userItem == null) {
+            return null;
+        }
+        userItem.setSellingPrice(sellUserItemDto.sellingPrice());
+        userItem.setSellingOrOpeningDate(sellUserItemDto.sellingDate());
+        userItem.setComment(sellUserItemDto.comment());
+
+        return userItemMapper.toDto(userItemRepository.save(userItem));
+    }
+
+    @Override
+    public UserItemDto openUserItem(Long id, OpenUserItemDto openUserItemDto) {
+        UserItem userItem = userItemRepository.findById(id).orElse(null);
+        if (userItem == null) {
+            return null;
+        }
+        userItem.setSellingOrOpeningDate(openUserItemDto.openingDate());
+        userItem.setComment(openUserItemDto.comment());
+
+        return userItemMapper.toDto(userItemRepository.save(userItem));
+    }
+
+    @Override
+    public void deleteUserItem(Long id) {
+        userItemRepository.deleteById(id);
     }
 }

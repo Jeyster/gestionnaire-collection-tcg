@@ -1,6 +1,8 @@
 package com.jeyster.gestionnaire_collection_tcg.controller.interfaces;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.CreateUserItemDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.OpenUserItemDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.SellUserItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.UserItemDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,5 +20,14 @@ public interface UserItemController {
 
     @PostMapping
     ResponseEntity<UserItemDto> createUserItem(@RequestBody CreateUserItemDto createUserItemDto);
+
+    @PutMapping("/{id}/sell")
+    ResponseEntity<UserItemDto> sellUserItem(@PathVariable Long id, @RequestBody SellUserItemDto sellUserItemDto);
+
+    @PutMapping("/{id}/open")
+    ResponseEntity<UserItemDto> openUserItem(@PathVariable Long id, @RequestBody OpenUserItemDto openUserItemDto);
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<Void> deleteUserItem(@PathVariable Long id);
 
 }
