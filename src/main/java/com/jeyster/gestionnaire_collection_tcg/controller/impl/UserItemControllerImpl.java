@@ -25,7 +25,7 @@ public class UserItemControllerImpl implements UserItemController {
     }
 
     @Override
-    public ResponseEntity<List<UserItemDto>> getUserItem(Long userId, Long itemId) {
+    public ResponseEntity<List<UserItemDto>> getUserItems(Long userId, Long itemId) {
         return ResponseEntity.ok(userItemService.getUserItems(userId, itemId));
     }
 
