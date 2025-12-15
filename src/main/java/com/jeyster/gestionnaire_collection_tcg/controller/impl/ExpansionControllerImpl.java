@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
 public class ExpansionControllerImpl implements ExpansionController {
 
     private final ExpansionService expansionService;
+
+    public ExpansionControllerImpl(ExpansionService expansionService) {
+        this.expansionService = expansionService;
+    }
 
     @Override
     public ResponseEntity<List<ExpansionDto>> getExpansions() {

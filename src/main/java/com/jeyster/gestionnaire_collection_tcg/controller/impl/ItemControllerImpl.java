@@ -1,9 +1,11 @@
 package com.jeyster.gestionnaire_collection_tcg.controller.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.controller.interfaces.ItemController;
+import com.jeyster.gestionnaire_collection_tcg.dto.CreateItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemPriceHistoryDto;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.ItemService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +31,11 @@ public class ItemControllerImpl implements ItemController {
     @Override
     public ResponseEntity<List<ItemPriceHistoryDto>> getItemPriceHistories(Long id) {
         return ResponseEntity.ok(itemService.getItemPriceHistories(id));
+    }
+
+    @Override
+    public ResponseEntity<ItemDto> createItem(@Valid CreateItemDto createItemDto) {
+        return ResponseEntity.ok(itemService.createItem(createItemDto));
     }
 
 }

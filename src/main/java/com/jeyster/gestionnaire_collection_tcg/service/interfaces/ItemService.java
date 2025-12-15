@@ -1,5 +1,6 @@
 package com.jeyster.gestionnaire_collection_tcg.service.interfaces;
 
+import com.jeyster.gestionnaire_collection_tcg.dto.CreateItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemPriceHistoryDto;
 import org.jspecify.annotations.Nullable;
@@ -13,4 +14,6 @@ public interface ItemService {
     ItemDto getItem(Long id);
 
     List<ItemPriceHistoryDto> getItemPriceHistories(Long id);
+
+    ItemDto createItem(CreateItemDto createItemDto);
 }
