@@ -13,10 +13,10 @@ public interface ItemController {
 
     @GetMapping
     ResponseEntity<List<ItemDto>> getItems(
-            @RequestParam(name = "game-id", required = false) Long gameId,
-            @RequestParam(name = "item-type-id", required = false) Long itemTypeId,
-            @RequestParam(name = "locale-id", required = false) Long localeId,
-            @RequestParam(name = "expansion-id", required = false) Long expansionId
+            @RequestParam(required = false) Long gameId,
+            @RequestParam(required = false) Long itemTypeId,
+            @RequestParam(required = false) Long localeId,
+            @RequestParam(required = false) Long expansionId
     );
 
     @GetMapping("/{id}")
