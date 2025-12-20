@@ -30,23 +30,25 @@ public class UserItem {
 
     private LocalDateTime purchaseDate;
 
+    private String purchaseComment;
+
     private Double sellingPrice;
 
     private LocalDateTime sellingOrOpeningDate;
 
-    private String comment;
+    private String sellingOrOpeningComment;
 
     public UserItem(
             User user,
             Item item,
             Double purchasePrice,
             LocalDateTime purchaseDate,
-            String comment
+            String purchaseComment
     ) {
         this.user = user;
         this.item = item;
         this.purchasePrice = purchasePrice;
         this.purchaseDate = purchaseDate;
-        this.comment = comment;
+        this.purchaseComment = purchaseComment;
     }
 }

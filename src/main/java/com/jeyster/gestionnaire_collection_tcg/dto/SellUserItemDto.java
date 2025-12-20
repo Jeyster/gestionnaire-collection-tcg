@@ -7,5 +7,5 @@ import java.time.LocalDateTime;
 public record SellUserItemDto(
         @NotNull Double sellingPrice,
         @NotNull LocalDateTime sellingDate,
-        String comment
+        String sellingComment
 ) {}

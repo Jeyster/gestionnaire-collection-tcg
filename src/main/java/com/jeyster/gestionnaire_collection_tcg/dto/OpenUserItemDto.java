@@ -6,5 +6,5 @@ import java.time.LocalDateTime;
 
 public record OpenUserItemDto(
         @NotNull LocalDateTime openingDate,
-        String comment
+        String openingComment
 ) {}

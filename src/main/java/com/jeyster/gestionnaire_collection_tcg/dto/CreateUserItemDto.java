@@ -9,5 +9,5 @@ public record CreateUserItemDto(
         @NotNull Long itemId,
         Double purchasePrice,
         LocalDateTime purchaseDate,
-        String comment
+        String purchaseComment
 ) {}

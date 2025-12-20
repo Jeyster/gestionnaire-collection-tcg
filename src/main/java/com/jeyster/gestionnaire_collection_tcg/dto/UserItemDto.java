@@ -8,7 +8,8 @@ public record UserItemDto(
         ItemDto item,
         Double purchasePrice,
         LocalDateTime purchaseDate,
+        String purchaseComment,
         Double sellingPrice,
         LocalDateTime sellingOrOpeningDate,
-        String comment
+        String sellingOrOpeningComment
 ) {}

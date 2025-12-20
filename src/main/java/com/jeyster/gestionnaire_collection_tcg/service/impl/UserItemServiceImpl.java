@@ -47,7 +47,7 @@ public class UserItemServiceImpl implements UserItemService {
                 item,
                 createUserItemDto.purchasePrice(),
                 createUserItemDto.purchaseDate(),
-                createUserItemDto.comment()
+                createUserItemDto.purchaseComment()
         );
         return userItemMapper.toDto(userItemRepository.save(userItem));
     }
@@ -60,7 +60,7 @@ public class UserItemServiceImpl implements UserItemService {
         }
         userItem.setSellingPrice(sellUserItemDto.sellingPrice());
         userItem.setSellingOrOpeningDate(sellUserItemDto.sellingDate());
-        userItem.setComment(sellUserItemDto.comment());
+        userItem.setSellingOrOpeningComment(sellUserItemDto.sellingComment());
 
         return userItemMapper.toDto(userItemRepository.save(userItem));
     }
@@ -72,7 +72,7 @@ public class UserItemServiceImpl implements UserItemService {
             return null;
         }
         userItem.setSellingOrOpeningDate(openUserItemDto.openingDate());
-        userItem.setComment(openUserItemDto.comment());
+        userItem.setSellingOrOpeningComment(openUserItemDto.openingComment());
 
         return userItemMapper.toDto(userItemRepository.save(userItem));
     }
