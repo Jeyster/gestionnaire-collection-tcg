@@ -1,9 +1,6 @@
 package com.jeyster.gestionnaire_collection_tcg.service.impl;
 
-import com.jeyster.gestionnaire_collection_tcg.dto.CreateUserItemDto;
-import com.jeyster.gestionnaire_collection_tcg.dto.OpenUserItemDto;
-import com.jeyster.gestionnaire_collection_tcg.dto.SellUserItemDto;
-import com.jeyster.gestionnaire_collection_tcg.dto.UserItemDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.*;
 import com.jeyster.gestionnaire_collection_tcg.mapper.UserItemMapper;
 import com.jeyster.gestionnaire_collection_tcg.model.Item;
 import com.jeyster.gestionnaire_collection_tcg.model.User;
@@ -49,6 +46,20 @@ public class UserItemServiceImpl implements UserItemService {
                 createUserItemDto.purchaseDate(),
                 createUserItemDto.purchaseComment()
         );
+        return userItemMapper.toDto(userItemRepository.save(userItem));
+    }
+
+    @Override
+    public UserItemDto editUserItem(Long id, EditUserItemDto editUserItemDto) {
+        UserItem userItem = userItemRepository.findById(id).orElse(null);
+        if (userItem == null) {
+            return null;
+        }
+
+        userItem.setPurchasePrice(editUserItemDto.purchasePrice());
+        userItem.setPurchaseDate(editUserItemDto.purchaseDate());
+        userItem.setPurchaseComment(editUserItemDto.purchaseComment());
+
         return userItemMapper.toDto(userItemRepository.save(userItem));
     }
 

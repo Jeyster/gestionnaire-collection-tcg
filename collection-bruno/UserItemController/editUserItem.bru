@@ -1,0 +1,28 @@
+meta {
+  name: editUserItem
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8080/v1/user-items/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 274
+}
+
+body:json {
+  {
+    "purchasePrice": 500.0,
+    "purchaseDate": "2024-02-01T00:00:00",
+    "purchaseComment": "Quelle belle vente à nouveau!"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

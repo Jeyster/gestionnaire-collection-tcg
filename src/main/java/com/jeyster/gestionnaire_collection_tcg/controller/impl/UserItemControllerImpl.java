@@ -1,10 +1,7 @@
 package com.jeyster.gestionnaire_collection_tcg.controller.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.controller.interfaces.UserItemController;
-import com.jeyster.gestionnaire_collection_tcg.dto.CreateUserItemDto;
-import com.jeyster.gestionnaire_collection_tcg.dto.OpenUserItemDto;
-import com.jeyster.gestionnaire_collection_tcg.dto.SellUserItemDto;
-import com.jeyster.gestionnaire_collection_tcg.dto.UserItemDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.*;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.UserItemService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +29,11 @@ public class UserItemControllerImpl implements UserItemController {
     @Override
     public ResponseEntity<UserItemDto> createUserItem(@Valid CreateUserItemDto createUserItemDto) {
         return ResponseEntity.ok(userItemService.createUserItem(createUserItemDto));
+    }
+
+    @Override
+    public ResponseEntity<UserItemDto> editUserItem(Long id, EditUserItemDto editUserItemDto) {
+        return ResponseEntity.ok(userItemService.editUserItem(id, editUserItemDto));
     }
 
     @Override
