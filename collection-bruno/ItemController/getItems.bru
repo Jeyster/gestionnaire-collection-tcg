@@ -5,16 +5,20 @@ meta {
 }
 
 get {
-  url: http://localhost:8080/v1/items?game-id=1&expansion-id=17&item-type-id=1
+  url: http://localhost:8080/v1/items?pageIndex=1&pageSize=10&sort=itemType.name&direction=asc
   body: none
   auth: inherit
 }
 
 params:query {
-  game-id: 1
-  expansion-id: 17
-  item-type-id: 1
-  ~locale-id: 1
+  pageIndex: 1
+  pageSize: 10
+  sort: itemType.name
+  direction: asc
+  ~itemTypeId: 1
+  ~gameId: 4
+  ~expansionId: 17
+  ~localeId: 1
 }
 
 settings {

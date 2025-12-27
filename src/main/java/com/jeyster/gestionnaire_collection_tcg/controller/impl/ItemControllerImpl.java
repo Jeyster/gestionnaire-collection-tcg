@@ -7,6 +7,7 @@ import com.jeyster.gestionnaire_collection_tcg.dto.ItemPriceHistoryDto;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.ItemService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,9 +20,30 @@ public class ItemControllerImpl implements ItemController {
     private final ItemService itemService;
 
     @Override
-    public ResponseEntity<List<ItemDto>> getItems(Long gameId, Long itemTypeId, Long localeId, Long expansionId) {
-        return ResponseEntity.ok(itemService.getItems(gameId, itemTypeId, localeId, expansionId));
+    public ResponseEntity<Page<ItemDto>> getItems(
+            Long gameId,
+            Long itemTypeId,
+            Long localeId,
+            Long expansionId,
+            int pageIndex,
+            int pageSize,
+            String sort,
+            String direction
+    ) {
+        return ResponseEntity.ok(
+                itemService.getItems(
+                        gameId,
+                        itemTypeId,
+                        localeId,
+                        expansionId,
+                        pageIndex,
+                        pageSize,
+                        sort,
+                        direction
+                )
+        );
     }
+
 
     @Override
     public ResponseEntity<ItemDto> getItem(Long id) {

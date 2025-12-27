@@ -9,6 +9,10 @@ import com.jeyster.gestionnaire_collection_tcg.repository.*;
 import com.jeyster.gestionnaire_collection_tcg.repository.specifications.ItemSpecifications;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,15 +29,37 @@ public class ItemServiceImpl implements ItemService {
     private final ExpansionRepository expansionRepository;
     private final ItemMapper itemMapper;
     private final ItemPriceHistoryMapper itemPriceHistoryMapper;
-    private final GameMapper gameMapper;
-    private final ItemTypeMapper itemTypeMapper;
-    private final LocaleMapper localeMapper;
-    private final ExpansionMapper expansionMapper;
 
     @Override
-    public List<ItemDto> getItems(Long gameId, Long itemTypeId, Long localeId, Long expansionId) {
-        return itemMapper.toDtoList(itemRepository.findAll(ItemSpecifications.withFilters(gameId, itemTypeId, localeId, expansionId)));
+    public Page<ItemDto> getItems(
+        Long gameId,
+        Long itemTypeId,
+        Long localeId,
+        Long expansionId,
+        int pageIndex,
+        int pageSize,
+        String sort,
+        String direction
+    ) {
+        Sort.Direction sortDirection =
+            "desc".equalsIgnoreCase(direction)
+                ? Sort.Direction.DESC
+                : Sort.Direction.ASC;
+
+        Pageable pageable = PageRequest.of(
+            pageIndex,
+            pageSize,
+            Sort.by(sortDirection, sort)
+        );
+
+        return itemRepository
+            .findAll(
+                ItemSpecifications.withFilters(gameId, itemTypeId, localeId, expansionId),
+                pageable
+            )
+            .map(itemMapper::toDto);
     }
+
 
     @Override
     public ItemDto getItem(Long id) {

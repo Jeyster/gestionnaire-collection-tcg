@@ -3,6 +3,7 @@ package com.jeyster.gestionnaire_collection_tcg.controller.interfaces;
 import com.jeyster.gestionnaire_collection_tcg.dto.CreateItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemPriceHistoryDto;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +13,15 @@ import java.util.List;
 public interface ItemController {
 
     @GetMapping
-    ResponseEntity<List<ItemDto>> getItems(
+    ResponseEntity<Page<ItemDto>> getItems(
             @RequestParam(required = false) Long gameId,
             @RequestParam(required = false) Long itemTypeId,
             @RequestParam(required = false) Long localeId,
-            @RequestParam(required = false) Long expansionId
+            @RequestParam(required = false) Long expansionId,
+            @RequestParam(defaultValue = "0") int pageIndex,
+            @RequestParam(defaultValue = "12") int pageSize,
+            @RequestParam(defaultValue = "id") String sort,
+            @RequestParam(defaultValue = "asc") String direction
     );
 
     @GetMapping("/{id}")
