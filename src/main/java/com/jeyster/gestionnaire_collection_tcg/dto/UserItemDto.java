@@ -1,5 +1,7 @@
 package com.jeyster.gestionnaire_collection_tcg.dto;
 
+import com.jeyster.gestionnaire_collection_tcg.enumeration.UserItemStatus;
+
 import java.time.LocalDateTime;
 
 public record UserItemDto(
@@ -11,5 +13,6 @@ public record UserItemDto(
         String purchaseComment,
         Double sellingPrice,
         LocalDateTime sellingOrOpeningDate,
-        String sellingOrOpeningComment
+        String sellingOrOpeningComment,
+        UserItemStatus status
 ) {}

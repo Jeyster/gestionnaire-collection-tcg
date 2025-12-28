@@ -1,5 +1,6 @@
 package com.jeyster.gestionnaire_collection_tcg.model;
 
+import com.jeyster.gestionnaire_collection_tcg.enumeration.UserItemStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -51,4 +52,11 @@ public class UserItem {
         this.purchaseDate = purchaseDate;
         this.purchaseComment = purchaseComment;
     }
+
+    public UserItemStatus getComputedStatus() {
+        if (sellingOrOpeningDate == null) return UserItemStatus.PURCHASED;
+        if (sellingPrice != null) return UserItemStatus.SOLD;
+        return UserItemStatus.OPENED;
+    }
+
 }
