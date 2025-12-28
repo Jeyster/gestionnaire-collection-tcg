@@ -72,6 +72,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public ItemPriceHistoryDto getLastItemPriceHistory(Long id) {
+        return itemPriceHistoryMapper.toDto(itemPriceHistoryRepository.findFirstByItemIdOrderByCreatedAtDesc(id).orElse(null));
+    }
+
+    @Override
     public ItemDto createItem(CreateItemDto createItemDto) {
         Game game = gameRepository.findById(createItemDto.gameId()).orElse(null);
         ItemType itemType = itemTypeRepository.findById(createItemDto.itemTypeId()).orElse(null);

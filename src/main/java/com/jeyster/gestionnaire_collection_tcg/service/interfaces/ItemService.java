@@ -24,5 +24,7 @@ public interface ItemService {
 
     List<ItemPriceHistoryDto> getItemPriceHistories(Long id);
 
+    ItemPriceHistoryDto getLastItemPriceHistory(Long id);
+
     ItemDto createItem(CreateItemDto createItemDto);
 }

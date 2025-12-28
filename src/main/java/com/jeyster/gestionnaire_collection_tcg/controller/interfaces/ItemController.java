@@ -30,6 +30,9 @@ public interface ItemController {
     @GetMapping("/{id}/price-histories")
     ResponseEntity<List<ItemPriceHistoryDto>> getItemPriceHistories(@PathVariable Long id);
 
+    @GetMapping("/{id}/last-price-history")
+    ResponseEntity<ItemPriceHistoryDto> getLastItemPriceHistory(@PathVariable Long id);
+
     @PostMapping
     ResponseEntity<ItemDto> createItem(@RequestBody CreateItemDto createItemDto);
 

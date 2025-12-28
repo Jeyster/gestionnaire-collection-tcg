@@ -56,6 +56,11 @@ public class ItemControllerImpl implements ItemController {
     }
 
     @Override
+    public ResponseEntity<ItemPriceHistoryDto> getLastItemPriceHistory(Long id) {
+        return ResponseEntity.ok(itemService.getLastItemPriceHistory(id));
+    }
+
+    @Override
     public ResponseEntity<ItemDto> createItem(@Valid CreateItemDto createItemDto) {
         return ResponseEntity.ok(itemService.createItem(createItemDto));
     }

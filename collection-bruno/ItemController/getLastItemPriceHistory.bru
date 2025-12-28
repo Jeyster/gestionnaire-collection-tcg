@@ -1,11 +1,11 @@
 meta {
-  name: getItemPriceHistories
+  name: getLastItemPriceHistory
   type: http
-  seq: 2
+  seq: 5
 }
 
 get {
-  url: http://localhost:8080/v1/items/:id/price-histories
+  url: http://localhost:8080/v1/items/:id/last-price-history
   body: none
   auth: inherit
 }
