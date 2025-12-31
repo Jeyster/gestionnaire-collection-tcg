@@ -7,10 +7,12 @@ public class UserItemSpecifications {
 
     public static Specification<UserItem> withFilters(
             Long userId,
-            Long itemId
+            Long itemId,
+            boolean notSoldOrOpened
     ) {
         return Specification.where(userIdEquals(userId))
-                .and(itemIdEquals(itemId));
+                .and(itemIdEquals(itemId))
+                .and(userItemNotSoldOrOpened(notSoldOrOpened));
     }
 
     private static Specification<UserItem> userIdEquals(Long userId) {
@@ -21,6 +23,11 @@ public class UserItemSpecifications {
     private static Specification<UserItem> itemIdEquals(Long itemId) {
         return (root, q, cb) ->
                 itemId == null ? null : cb.equal(root.get("item").get("id"), itemId);
+    }
+
+    private static Specification<UserItem> userItemNotSoldOrOpened(boolean notSoldOrOpened) {
+        return (root, q, cb) ->
+                notSoldOrOpened ? cb.isNull(root.get("sellingOrOpeningDate")) : null;
     }
 
 }

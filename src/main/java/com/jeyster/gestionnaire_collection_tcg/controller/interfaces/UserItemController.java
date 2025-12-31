@@ -15,6 +15,9 @@ public interface UserItemController {
     @GetMapping
     ResponseEntity<List<UserItemDto>> getUserItems(@RequestParam Long userId, @RequestParam Long itemId);
 
+    @GetMapping("/count")
+    ResponseEntity<Long> getUserItemsCount(@RequestParam Long userId, @RequestParam Long itemId);
+
     @PostMapping
     ResponseEntity<UserItemDto> createUserItem(@RequestBody CreateUserItemDto createUserItemDto);
 

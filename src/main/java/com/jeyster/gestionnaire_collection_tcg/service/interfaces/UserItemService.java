@@ -10,6 +10,8 @@ public interface UserItemService {
 
     List<UserItemDto> getUserItems(Long userId, Long itemId);
 
+    Long getUserItemsCount(Long userId, Long itemId);
+
     UserItemDto createUserItem(CreateUserItemDto createUserItemDto);
 
     UserItemDto editUserItem(Long id, EditUserItemDto editUserItemDto);

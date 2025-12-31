@@ -31,7 +31,12 @@ public class UserItemServiceImpl implements UserItemService {
 
     @Override
     public List<UserItemDto> getUserItems(Long userId, Long itemId) {
-        return userItemMapper.toDtoList(userItemRepository.findAll(UserItemSpecifications.withFilters(userId, itemId)));
+        return userItemMapper.toDtoList(userItemRepository.findAll(UserItemSpecifications.withFilters(userId, itemId, false)));
+    }
+
+    @Override
+    public Long getUserItemsCount(Long userId, Long itemId) {
+        return userItemRepository.count(UserItemSpecifications.withFilters(userId, itemId, true));
     }
 
     @Override
