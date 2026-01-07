@@ -18,7 +18,7 @@ public class LocaleServiceImpl implements LocaleService {
 
     @Override
     public List<LocaleDto> getLocales() {
-        return localeMapper.toDtoList(localeRepository.findAll());
+        return localeMapper.toDtoList(localeRepository.findAllByOrderByName());
     }
 
     @Override

@@ -18,7 +18,7 @@ public class ItemTypeServiceImpl implements ItemTypeService {
 
     @Override
     public List<ItemTypeDto> getItemTypes() {
-        return itemTypeMapper.toDtoList(itemTypeRepository.findAll());
+        return itemTypeMapper.toDtoList(itemTypeRepository.findAllByOrderByName());
     }
 
     @Override

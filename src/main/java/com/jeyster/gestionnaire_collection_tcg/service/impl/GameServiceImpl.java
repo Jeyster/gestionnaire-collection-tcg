@@ -28,7 +28,7 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public List<GameDto> getGames() {
-        return gameMapper.toDtoList(gameRepository.findAll());
+        return gameMapper.toDtoList(gameRepository.findAllByOrderByName());
     }
 
     @Override
@@ -38,11 +38,11 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public List<ExpansionDto> getGameExpansions(Long id) {
-        return expansionMapper.toDtoList(expansionRepository.findAllByGameId(id));
+        return expansionMapper.toDtoList(expansionRepository.findAllByGameIdOrderByName(id));
     }
 
     @Override
     public List<ItemTypeDto> getGameItemTypes(Long id) {
-        return itemTypeMapper.toDtoList(itemTypeRepository.findDistinctByItems_Game_Id(id));
+        return itemTypeMapper.toDtoList(itemTypeRepository.findDistinctByItems_Game_IdOrderByName(id));
     }
 }

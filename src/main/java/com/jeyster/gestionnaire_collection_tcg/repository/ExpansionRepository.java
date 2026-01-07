@@ -6,5 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ExpansionRepository extends JpaRepository<Expansion, Long> {
-    List<Expansion> findAllByGameId(Long id);
+
+    List<Expansion> findAllByOrderByName();
+
+    List<Expansion> findAllByGameIdOrderByName(Long id);
+
 }

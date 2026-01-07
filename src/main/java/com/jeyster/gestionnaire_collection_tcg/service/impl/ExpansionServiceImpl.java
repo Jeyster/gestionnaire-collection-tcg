@@ -18,7 +18,7 @@ public class ExpansionServiceImpl implements ExpansionService {
 
     @Override
     public List<ExpansionDto> getExpansions() {
-        return expansionMapper.toDtoList(expansionRepository.findAll());
+        return expansionMapper.toDtoList(expansionRepository.findAllByOrderByName());
     }
 
     @Override

@@ -6,5 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ItemTypeRepository extends JpaRepository<ItemType, Long> {
-    List<ItemType> findDistinctByItems_Game_Id(Long id);
+
+    List<ItemType> findAllByOrderByName();
+
+    List<ItemType> findDistinctByItems_Game_IdOrderByName(Long id);
+
 }
