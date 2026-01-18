@@ -36,6 +36,11 @@ public class UserItemServiceImpl implements UserItemService {
 
     @Override
     public Long getUserItemsCount(Long userId, Long itemId) {
+        return userItemRepository.count(UserItemSpecifications.withFilters(userId, itemId, false));
+    }
+
+    @Override
+    public Long getCurrentUserItemsCount(Long userId, Long itemId) {
         return userItemRepository.count(UserItemSpecifications.withFilters(userId, itemId, true));
     }
 

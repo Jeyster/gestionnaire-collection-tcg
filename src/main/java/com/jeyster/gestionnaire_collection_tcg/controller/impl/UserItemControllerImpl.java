@@ -32,6 +32,11 @@ public class UserItemControllerImpl implements UserItemController {
     }
 
     @Override
+    public ResponseEntity<Long> getCurrentUserItemsCount(Long userId, Long itemId) {
+        return ResponseEntity.ok(userItemService.getCurrentUserItemsCount(userId, itemId));
+    }
+
+    @Override
     public ResponseEntity<UserItemDto> createUserItem(@Valid CreateUserItemDto createUserItemDto) {
         return ResponseEntity.ok(userItemService.createUserItem(createUserItemDto));
     }
