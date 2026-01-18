@@ -64,6 +64,9 @@ public class UserItemServiceImpl implements UserItemService {
         userItem.setPurchasePrice(editUserItemDto.purchasePrice());
         userItem.setPurchaseDate(editUserItemDto.purchaseDate());
         userItem.setPurchaseComment(editUserItemDto.purchaseComment());
+        userItem.setSellingPrice(editUserItemDto.sellingPrice());
+        userItem.setSellingOrOpeningDate(editUserItemDto.sellingOrOpeningDate());
+        userItem.setSellingOrOpeningComment(editUserItemDto.sellingOrOpeningComment());
 
         return userItemMapper.toDto(userItemRepository.save(userItem));
     }

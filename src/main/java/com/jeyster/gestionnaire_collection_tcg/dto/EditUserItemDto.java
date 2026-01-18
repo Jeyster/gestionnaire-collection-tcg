@@ -7,5 +7,8 @@ import java.time.LocalDateTime;
 public record EditUserItemDto(
         @NotNull Double purchasePrice,
         @NotNull LocalDateTime purchaseDate,
-        String purchaseComment
+        String purchaseComment,
+        Double sellingPrice,
+        LocalDateTime sellingOrOpeningDate,
+        String sellingOrOpeningComment
 ) {}
