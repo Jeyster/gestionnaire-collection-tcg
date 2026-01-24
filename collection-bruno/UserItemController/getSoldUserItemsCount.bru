@@ -1,11 +1,11 @@
 meta {
-  name: getUserItemsCount
+  name: getSoldUserItemsCount
   type: http
-  seq: 8
+  seq: 10
 }
 
 get {
-  url: http://localhost:8080/v1/user-items/count?userId=1&itemId=58
+  url: http://localhost:8080/v1/user-items/sold-count?userId=1&itemId=58
   body: none
   auth: inherit
 }

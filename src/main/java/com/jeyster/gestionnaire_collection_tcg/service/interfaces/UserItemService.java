@@ -12,7 +12,11 @@ public interface UserItemService {
 
     Long getUserItemsCount(Long userId, Long itemId);
 
-    Long getCurrentUserItemsCount(Long userId, Long itemId);
+    Long getUserItemsInStockCount(Long userId, Long itemId);
+
+    Long getSoldUserItemsCount(Long userId, Long itemId);
+
+    Long getOpenedUserItemsCount(Long userId, Long itemId);
 
     UserItemDto createUserItem(CreateUserItemDto createUserItemDto);
 

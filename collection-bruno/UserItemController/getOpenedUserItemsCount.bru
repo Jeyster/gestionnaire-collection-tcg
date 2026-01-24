@@ -1,18 +1,18 @@
 meta {
-  name: getCurrentUserItemsCount
+  name: getOpenedUserItemsCount
   type: http
-  seq: 9
+  seq: 11
 }
 
 get {
-  url: http://localhost:8080/v1/user-items/current-count?userId=1&itemId=7
+  url: http://localhost:8080/v1/user-items/opened-count?userId=1&itemId=58
   body: none
   auth: inherit
 }
 
 params:query {
   userId: 1
-  itemId: 7
+  itemId: 58
 }
 
 settings {

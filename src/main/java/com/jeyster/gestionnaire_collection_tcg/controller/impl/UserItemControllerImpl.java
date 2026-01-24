@@ -32,8 +32,18 @@ public class UserItemControllerImpl implements UserItemController {
     }
 
     @Override
-    public ResponseEntity<Long> getCurrentUserItemsCount(Long userId, Long itemId) {
-        return ResponseEntity.ok(userItemService.getCurrentUserItemsCount(userId, itemId));
+    public ResponseEntity<Long> getUserItemsInStockCount(Long userId, Long itemId) {
+        return ResponseEntity.ok(userItemService.getUserItemsInStockCount(userId, itemId));
+    }
+
+    @Override
+    public ResponseEntity<Long> getSoldUserItemsCount(Long userId, Long itemId) {
+        return ResponseEntity.ok(userItemService.getSoldUserItemsCount(userId, itemId));
+    }
+
+    @Override
+    public ResponseEntity<Long> getOpenedUserItemsCount(Long userId, Long itemId) {
+        return ResponseEntity.ok(userItemService.getOpenedUserItemsCount(userId, itemId));
     }
 
     @Override

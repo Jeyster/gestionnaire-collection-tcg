@@ -18,8 +18,14 @@ public interface UserItemController {
     @GetMapping("/count")
     ResponseEntity<Long> getUserItemsCount(@RequestParam Long userId, @RequestParam Long itemId);
 
-    @GetMapping("/current-count")
-    ResponseEntity<Long> getCurrentUserItemsCount(@RequestParam Long userId, @RequestParam Long itemId);
+    @GetMapping("/stock-count")
+    ResponseEntity<Long> getUserItemsInStockCount(@RequestParam Long userId, @RequestParam Long itemId);
+
+    @GetMapping("/sold-count")
+    ResponseEntity<Long> getSoldUserItemsCount(@RequestParam Long userId, @RequestParam Long itemId);
+
+    @GetMapping("/opened-count")
+    ResponseEntity<Long> getOpenedUserItemsCount(@RequestParam Long userId, @RequestParam Long itemId);
 
     @PostMapping
     ResponseEntity<UserItemDto> createUserItem(@RequestBody CreateUserItemDto createUserItemDto);
