@@ -1,10 +1,7 @@
 package com.jeyster.gestionnaire_collection_tcg.controller.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.controller.interfaces.ItemController;
-import com.jeyster.gestionnaire_collection_tcg.dto.CreateItemDto;
-import com.jeyster.gestionnaire_collection_tcg.dto.ItemDto;
-import com.jeyster.gestionnaire_collection_tcg.dto.ItemPriceHistoryDto;
-import com.jeyster.gestionnaire_collection_tcg.dto.ToggleCmScrapingDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.*;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.ItemService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -54,6 +51,11 @@ public class ItemControllerImpl implements ItemController {
     @Override
     public ResponseEntity<ItemDto> toggleCmScraping(Long id, ToggleCmScrapingDto toggleCmScrapingDto) {
         return ResponseEntity.ok(itemService.toggleCmScraping(id, toggleCmScrapingDto));
+    }
+
+    @Override
+    public ResponseEntity<List<ItemDto>> bulkToggleCmScraping(BulkToggleCmScrapingDto bulkToggleCmScrapingDto) {
+        return ResponseEntity.ok(itemService.bulkToggleCmScraping(bulkToggleCmScrapingDto));
     }
 
     @Override

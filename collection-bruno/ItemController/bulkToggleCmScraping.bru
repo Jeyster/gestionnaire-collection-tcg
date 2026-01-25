@@ -1,0 +1,23 @@
+meta {
+  name: bulkToggleCmScraping
+  type: http
+  seq: 7
+}
+
+put {
+  url: http://localhost:8080/v1/items/toggle-scraping
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "isCmScrapingActive": true,
+    "itemIds": [1, 2, 3, 4]
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,9 +1,6 @@
 package com.jeyster.gestionnaire_collection_tcg.controller.interfaces;
 
-import com.jeyster.gestionnaire_collection_tcg.dto.CreateItemDto;
-import com.jeyster.gestionnaire_collection_tcg.dto.ItemDto;
-import com.jeyster.gestionnaire_collection_tcg.dto.ItemPriceHistoryDto;
-import com.jeyster.gestionnaire_collection_tcg.dto.ToggleCmScrapingDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.*;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +27,9 @@ public interface ItemController {
 
     @PutMapping("/{id}")
     ResponseEntity<ItemDto> toggleCmScraping(@PathVariable Long id, @RequestBody ToggleCmScrapingDto toggleCmScrapingDto);
+
+    @PutMapping("/toggle-scraping")
+    ResponseEntity<List<ItemDto>> bulkToggleCmScraping(@RequestBody BulkToggleCmScrapingDto bulkToggleCmScrapingDto);
 
     @GetMapping("/{id}/price-histories")
     ResponseEntity<List<ItemPriceHistoryDto>> getItemPriceHistories(@PathVariable Long id);
