@@ -35,4 +35,6 @@ public class Item {
     private Expansion expansion;
 
     private String complement;
+
+    private Boolean isCmScrapingActive;
 }

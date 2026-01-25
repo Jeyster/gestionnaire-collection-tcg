@@ -7,5 +7,6 @@ public record ItemDto(
         ItemTypeDto itemType,
         LocaleDto locale,
         ExpansionDto expansion,
-        String complement
+        String complement,
+        Boolean isCmScrapingActive
 ) {}

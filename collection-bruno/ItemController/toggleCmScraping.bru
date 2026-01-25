@@ -1,0 +1,26 @@
+meta {
+  name: toggleCmScraping
+  type: http
+  seq: 6
+}
+
+put {
+  url: http://localhost:8080/v1/items/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 7
+}
+
+body:json {
+  {
+    "isCmScrapingActive": true
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

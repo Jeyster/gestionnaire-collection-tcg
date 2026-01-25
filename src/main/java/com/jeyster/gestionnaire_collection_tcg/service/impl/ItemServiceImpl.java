@@ -3,6 +3,7 @@ package com.jeyster.gestionnaire_collection_tcg.service.impl;
 import com.jeyster.gestionnaire_collection_tcg.dto.CreateItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemPriceHistoryDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.ToggleCmScrapingDto;
 import com.jeyster.gestionnaire_collection_tcg.mapper.*;
 import com.jeyster.gestionnaire_collection_tcg.model.*;
 import com.jeyster.gestionnaire_collection_tcg.repository.*;
@@ -91,6 +92,17 @@ public class ItemServiceImpl implements ItemService {
                 .expansion(expansion)
                 .complement(createItemDto.complement())
                 .build();
+        return itemMapper.toDto(itemRepository.save(item));
+    }
+
+    @Override
+    public ItemDto toggleCmScraping(Long id, ToggleCmScrapingDto toggleCmScrapingDto) {
+        Item item = itemRepository.findById(id).orElse(null);
+        if (item == null) {
+            return null;
+        }
+        item.setIsCmScrapingActive(toggleCmScrapingDto.isCmScrapingActive());
+
         return itemMapper.toDto(itemRepository.save(item));
     }
 }

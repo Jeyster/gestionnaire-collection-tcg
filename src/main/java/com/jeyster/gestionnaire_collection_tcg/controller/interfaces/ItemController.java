@@ -3,6 +3,7 @@ package com.jeyster.gestionnaire_collection_tcg.controller.interfaces;
 import com.jeyster.gestionnaire_collection_tcg.dto.CreateItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemPriceHistoryDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.ToggleCmScrapingDto;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,9 @@ public interface ItemController {
 
     @GetMapping("/{id}")
     ResponseEntity<ItemDto> getItem(@PathVariable Long id);
+
+    @PutMapping("/{id}")
+    ResponseEntity<ItemDto> toggleCmScraping(@PathVariable Long id, @RequestBody ToggleCmScrapingDto toggleCmScrapingDto);
 
     @GetMapping("/{id}/price-histories")
     ResponseEntity<List<ItemPriceHistoryDto>> getItemPriceHistories(@PathVariable Long id);

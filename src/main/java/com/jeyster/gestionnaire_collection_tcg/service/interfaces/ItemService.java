@@ -3,6 +3,7 @@ package com.jeyster.gestionnaire_collection_tcg.service.interfaces;
 import com.jeyster.gestionnaire_collection_tcg.dto.CreateItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemPriceHistoryDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.ToggleCmScrapingDto;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -27,4 +28,6 @@ public interface ItemService {
     ItemPriceHistoryDto getLastItemPriceHistory(Long id);
 
     ItemDto createItem(CreateItemDto createItemDto);
+
+    ItemDto toggleCmScraping(Long id, ToggleCmScrapingDto toggleCmScrapingDto);
 }
