@@ -1,6 +1,7 @@
 package com.jeyster.gestionnaire_collection_tcg.controller.interfaces;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.*;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateItemDto;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

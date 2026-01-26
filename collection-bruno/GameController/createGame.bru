@@ -1,0 +1,22 @@
+meta {
+  name: createGame
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:8080/v1/games
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Sorcery TCG"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

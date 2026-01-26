@@ -2,6 +2,7 @@ package com.jeyster.gestionnaire_collection_tcg.controller.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.controller.interfaces.ItemTypeController;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemTypeDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateItemTypeDto;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.ItemTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,11 @@ public class ItemTypeControllerImpl implements ItemTypeController {
     @Override
     public ResponseEntity<ItemTypeDto> getItemType(Long id) {
         return ResponseEntity.ok(itemTypeService.getItemType(id));
+    }
+
+    @Override
+    public ResponseEntity<ItemTypeDto> createItemType(CreateItemTypeDto createItemTypeDto) {
+        return ResponseEntity.ok(itemTypeService.createItemType(createItemTypeDto));
     }
 }
 

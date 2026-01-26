@@ -2,6 +2,7 @@ package com.jeyster.gestionnaire_collection_tcg.controller.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.controller.interfaces.ExpansionController;
 import com.jeyster.gestionnaire_collection_tcg.dto.ExpansionDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateExpansionDto;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.ExpansionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,11 @@ public class ExpansionControllerImpl implements ExpansionController {
     @Override
     public ResponseEntity<ExpansionDto> getExpansion(Long id) {
         return ResponseEntity.ok(expansionService.getExpansion(id));
+    }
+
+    @Override
+    public ResponseEntity<ExpansionDto> createExpansion(CreateExpansionDto createExpansionDto) {
+        return ResponseEntity.ok(expansionService.createExpansion(createExpansionDto));
     }
 }
 

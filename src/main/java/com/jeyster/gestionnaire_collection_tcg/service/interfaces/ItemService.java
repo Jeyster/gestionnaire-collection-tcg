@@ -1,6 +1,7 @@
 package com.jeyster.gestionnaire_collection_tcg.service.interfaces;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.*;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateItemDto;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

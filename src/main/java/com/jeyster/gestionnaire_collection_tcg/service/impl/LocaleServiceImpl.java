@@ -1,6 +1,7 @@
 package com.jeyster.gestionnaire_collection_tcg.service.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.LocaleDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateLocaleDto;
 import com.jeyster.gestionnaire_collection_tcg.mapper.LocaleMapper;
 import com.jeyster.gestionnaire_collection_tcg.repository.LocaleRepository;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.LocaleService;
@@ -24,5 +25,10 @@ public class LocaleServiceImpl implements LocaleService {
     @Override
     public LocaleDto getLocale(Long id) {
         return localeMapper.toDto(localeRepository.findById(id).orElse(null));
+    }
+
+    @Override
+    public LocaleDto createLocale(CreateLocaleDto createLocaleDto) {
+        return localeMapper.toDto(localeRepository.save(localeMapper.toEntity(createLocaleDto)));
     }
 }

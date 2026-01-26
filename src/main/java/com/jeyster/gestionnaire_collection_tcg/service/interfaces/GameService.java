@@ -3,6 +3,7 @@ package com.jeyster.gestionnaire_collection_tcg.service.interfaces;
 import com.jeyster.gestionnaire_collection_tcg.dto.ExpansionDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.GameDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemTypeDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateGameDto;
 import org.jspecify.annotations.Nullable;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface GameService {
     List<ExpansionDto> getGameExpansions(Long id);
 
     List<ItemTypeDto> getGameItemTypes(Long id);
+
+    GameDto createGame(CreateGameDto createGameDto);
 }

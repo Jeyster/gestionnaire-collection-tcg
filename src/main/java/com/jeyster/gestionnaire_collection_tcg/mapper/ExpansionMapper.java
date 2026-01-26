@@ -13,4 +13,6 @@ public interface ExpansionMapper {
 
     List<ExpansionDto> toDtoList(List<Expansion> expansions);
 
+    Expansion toEntity(ExpansionDto expansionDto);
+
 }

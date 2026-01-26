@@ -1,6 +1,7 @@
 package com.jeyster.gestionnaire_collection_tcg.service.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.*;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateUserItemDto;
 import com.jeyster.gestionnaire_collection_tcg.mapper.UserItemMapper;
 import com.jeyster.gestionnaire_collection_tcg.model.Item;
 import com.jeyster.gestionnaire_collection_tcg.model.User;

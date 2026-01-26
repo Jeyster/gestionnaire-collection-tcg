@@ -1,6 +1,7 @@
 package com.jeyster.gestionnaire_collection_tcg.service.interfaces;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.*;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateUserItemDto;
 
 import java.util.List;
 

@@ -3,6 +3,7 @@ package com.jeyster.gestionnaire_collection_tcg.service.impl;
 import com.jeyster.gestionnaire_collection_tcg.dto.ExpansionDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.GameDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemTypeDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateGameDto;
 import com.jeyster.gestionnaire_collection_tcg.mapper.ExpansionMapper;
 import com.jeyster.gestionnaire_collection_tcg.mapper.GameMapper;
 import com.jeyster.gestionnaire_collection_tcg.mapper.ItemTypeMapper;
@@ -44,5 +45,10 @@ public class GameServiceImpl implements GameService {
     @Override
     public List<ItemTypeDto> getGameItemTypes(Long id) {
         return itemTypeMapper.toDtoList(itemTypeRepository.findDistinctByItems_Game_IdOrderByName(id));
+    }
+
+    @Override
+    public GameDto createGame(CreateGameDto createGameDto) {
+        return gameMapper.toDto(gameRepository.save(gameMapper.toEntity(createGameDto)));
     }
 }

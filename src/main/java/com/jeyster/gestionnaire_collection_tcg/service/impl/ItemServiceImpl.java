@@ -1,6 +1,7 @@
 package com.jeyster.gestionnaire_collection_tcg.service.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.*;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateItemDto;
 import com.jeyster.gestionnaire_collection_tcg.mapper.*;
 import com.jeyster.gestionnaire_collection_tcg.model.*;
 import com.jeyster.gestionnaire_collection_tcg.repository.*;
@@ -110,7 +111,7 @@ public class ItemServiceImpl implements ItemService {
         List<Item> items = itemRepository.findAllById(itemIds);
 
         items.forEach(item -> item.setIsCmScrapingActive(isCmScrapingActive));
-        
+
         return itemMapper.toDtoList(itemRepository.saveAll(items));
     }
 }

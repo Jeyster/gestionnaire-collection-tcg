@@ -1,0 +1,23 @@
+meta {
+  name: createExpansion
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/v1/expansions
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Superbe set Pokémon !",
+    "gameId": 1
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

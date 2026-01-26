@@ -2,6 +2,7 @@ package com.jeyster.gestionnaire_collection_tcg.controller.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.controller.interfaces.ItemController;
 import com.jeyster.gestionnaire_collection_tcg.dto.*;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateItemDto;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.ItemService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

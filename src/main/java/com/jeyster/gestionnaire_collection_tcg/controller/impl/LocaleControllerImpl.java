@@ -2,6 +2,7 @@ package com.jeyster.gestionnaire_collection_tcg.controller.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.controller.interfaces.LocaleController;
 import com.jeyster.gestionnaire_collection_tcg.dto.LocaleDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateLocaleDto;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.LocaleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,11 @@ public class LocaleControllerImpl implements LocaleController {
     @Override
     public ResponseEntity<LocaleDto> getLocale(Long id) {
         return ResponseEntity.ok(localeService.getLocale(id));
+    }
+
+    @Override
+    public ResponseEntity<LocaleDto> createLocale(CreateLocaleDto createLocaleDto) {
+        return ResponseEntity.ok(localeService.createLocale(createLocaleDto));
     }
 }
 

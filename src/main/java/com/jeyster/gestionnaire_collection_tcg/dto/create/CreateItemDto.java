@@ -1,4 +1,4 @@
-package com.jeyster.gestionnaire_collection_tcg.dto;
+package com.jeyster.gestionnaire_collection_tcg.dto.create;
 
 import jakarta.validation.constraints.NotNull;
 

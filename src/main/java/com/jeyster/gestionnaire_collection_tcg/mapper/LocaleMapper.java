@@ -1,6 +1,7 @@
 package com.jeyster.gestionnaire_collection_tcg.mapper;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.LocaleDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateLocaleDto;
 import com.jeyster.gestionnaire_collection_tcg.model.Locale;
 import org.mapstruct.Mapper;
 
@@ -12,5 +13,7 @@ public interface LocaleMapper {
     LocaleDto toDto(Locale locale);
 
     List<LocaleDto> toDtoList(List<Locale> locales);
+
+    Locale toEntity(CreateLocaleDto createLocaleDto);
 
 }
