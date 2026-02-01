@@ -4,6 +4,7 @@ import com.jeyster.gestionnaire_collection_tcg.dto.ExpansionDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.GameDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemTypeDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateGameDto;
+import com.jeyster.gestionnaire_collection_tcg.exception.AlreadyExistingObjectException;
 import org.jspecify.annotations.Nullable;
 
 import java.util.List;

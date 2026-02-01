@@ -4,9 +4,11 @@ import com.jeyster.gestionnaire_collection_tcg.dto.ExpansionDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.GameDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemTypeDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateGameDto;
+import com.jeyster.gestionnaire_collection_tcg.exception.AlreadyExistingObjectException;
 import com.jeyster.gestionnaire_collection_tcg.mapper.ExpansionMapper;
 import com.jeyster.gestionnaire_collection_tcg.mapper.GameMapper;
 import com.jeyster.gestionnaire_collection_tcg.mapper.ItemTypeMapper;
+import com.jeyster.gestionnaire_collection_tcg.model.Game;
 import com.jeyster.gestionnaire_collection_tcg.repository.ExpansionRepository;
 import com.jeyster.gestionnaire_collection_tcg.repository.GameRepository;
 import com.jeyster.gestionnaire_collection_tcg.repository.ItemTypeRepository;
@@ -49,6 +51,10 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public GameDto createGame(CreateGameDto createGameDto) {
+        Game game = gameRepository.findByName(createGameDto.name());
+        if (game != null) {
+            throw new AlreadyExistingObjectException(game.getName());
+        }
         return gameMapper.toDto(gameRepository.save(gameMapper.toEntity(createGameDto)));
     }
 }
