@@ -10,4 +10,6 @@ public interface ItemRepository extends JpaRepository<Item, Long>, JpaSpecificat
 
     Item findByUrl(String url);
 
+    List<Item> findAllByIsCmScrapingActiveOrderById(boolean isCmScrapingActive);
+
 }

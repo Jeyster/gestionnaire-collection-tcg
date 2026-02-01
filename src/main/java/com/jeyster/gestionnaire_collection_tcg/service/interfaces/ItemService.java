@@ -19,6 +19,8 @@ public interface ItemService {
             String direction
     );
 
+    List<ItemDto> getItems(ToggleCmScrapingDto toggleCmScrapingDto);
+
     ItemDto getItem(Long id);
 
     List<ItemPriceHistoryDto> getItemPriceHistories(Long id);

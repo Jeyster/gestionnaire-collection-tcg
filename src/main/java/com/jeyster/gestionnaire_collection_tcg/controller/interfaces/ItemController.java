@@ -23,6 +23,9 @@ public interface ItemController {
             @RequestParam(defaultValue = "asc") String direction
     );
 
+    @GetMapping("/by-scraping")
+    ResponseEntity<List<ItemDto>> getItems(@RequestBody ToggleCmScrapingDto toggleCmScrapingDto);
+
     @GetMapping("/{id}")
     ResponseEntity<ItemDto> getItem(@PathVariable Long id);
 

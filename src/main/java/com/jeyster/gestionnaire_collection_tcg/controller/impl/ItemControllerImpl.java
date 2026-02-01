@@ -43,6 +43,10 @@ public class ItemControllerImpl implements ItemController {
         );
     }
 
+    @Override
+    public ResponseEntity<List<ItemDto>> getItems(ToggleCmScrapingDto toggleCmScrapingDto) {
+        return ResponseEntity.ok(itemService.getItems(toggleCmScrapingDto));
+    }
 
     @Override
     public ResponseEntity<ItemDto> getItem(Long id) {

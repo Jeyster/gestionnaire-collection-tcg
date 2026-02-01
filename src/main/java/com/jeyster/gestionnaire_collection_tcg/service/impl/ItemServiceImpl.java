@@ -61,6 +61,11 @@ public class ItemServiceImpl implements ItemService {
             .map(itemMapper::toDto);
     }
 
+    @Override
+    public List<ItemDto> getItems(ToggleCmScrapingDto toggleCmScrapingDto) {
+        return itemMapper.toDtoList(itemRepository.findAllByIsCmScrapingActiveOrderById(toggleCmScrapingDto.isCmScrapingActive()));
+    }
+
 
     @Override
     public ItemDto getItem(Long id) {
