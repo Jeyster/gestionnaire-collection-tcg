@@ -40,7 +40,7 @@ public class ExpansionServiceImpl implements ExpansionService {
     public ExpansionDto createExpansion(CreateExpansionDto createExpansionDto) {
         Expansion existingExpansion = expansionRepository.findByName(createExpansionDto.expansionName());
         if (existingExpansion != null) {
-            throw new AlreadyExistingObjectException(existingExpansion.getName());
+            throw new AlreadyExistingObjectException(existingExpansion.getName(), true);
         }
 
         Game game = gameRepository.findById(createExpansionDto.gameId()).orElse(null);

@@ -33,7 +33,7 @@ public class LocaleServiceImpl implements LocaleService {
     public LocaleDto createLocale(CreateLocaleDto createLocaleDto) {
         Locale locale = localeRepository.findByName(createLocaleDto.name());
         if (locale != null) {
-            throw new AlreadyExistingObjectException(locale.getName());
+            throw new AlreadyExistingObjectException(locale.getName(), true);
         }
 
         return localeMapper.toDto(localeRepository.save(localeMapper.toEntity(createLocaleDto)));

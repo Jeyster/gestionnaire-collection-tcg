@@ -21,9 +21,9 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(NotExistingObjectException.class)
-    public ResponseEntity<ProblemDetail> handleAlreadyExists(NotExistingObjectException ex) {
+    public ResponseEntity<ProblemDetail> handleNotExisting(NotExistingObjectException ex) {
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(
-                HttpStatus.CONFLICT,
+                HttpStatus.NOT_FOUND,
                 ex.getMessage()
         );
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(problem);

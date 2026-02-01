@@ -2,6 +2,8 @@ package com.jeyster.gestionnaire_collection_tcg.service.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.*;
 import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateItemDto;
+import com.jeyster.gestionnaire_collection_tcg.exception.AlreadyExistingObjectException;
+import com.jeyster.gestionnaire_collection_tcg.exception.NotExistingObjectException;
 import com.jeyster.gestionnaire_collection_tcg.mapper.*;
 import com.jeyster.gestionnaire_collection_tcg.model.*;
 import com.jeyster.gestionnaire_collection_tcg.repository.*;
@@ -77,10 +79,19 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ItemDto createItem(CreateItemDto createItemDto) {
+        Item existingItem = itemRepository.findByUrl(createItemDto.url());
+        if (existingItem != null) {
+            throw new AlreadyExistingObjectException(existingItem.getUrl(), false);
+        }
+
         Game game = gameRepository.findById(createItemDto.gameId()).orElse(null);
         ItemType itemType = itemTypeRepository.findById(createItemDto.itemTypeId()).orElse(null);
         Locale locale = localeRepository.findById(createItemDto.localeId()).orElse(null);
         Expansion expansion = expansionRepository.findById(createItemDto.expansionId()).orElse(null);
+
+        if (game == null || itemType == null || locale == null || expansion == null) {
+            throw new NotExistingObjectException();
+        }
 
         Item item = Item.builder()
                 .url(createItemDto.url())
@@ -89,6 +100,7 @@ public class ItemServiceImpl implements ItemService {
                 .locale(locale)
                 .expansion(expansion)
                 .complement(createItemDto.complement())
+                .isCmScrapingActive(createItemDto.isCmScrapingActive())
                 .build();
         return itemMapper.toDto(itemRepository.save(item));
     }

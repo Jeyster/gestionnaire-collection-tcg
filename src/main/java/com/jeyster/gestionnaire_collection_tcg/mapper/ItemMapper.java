@@ -1,6 +1,7 @@
 package com.jeyster.gestionnaire_collection_tcg.mapper;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemDto;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateItemDto;
 import com.jeyster.gestionnaire_collection_tcg.model.Item;
 import org.mapstruct.Mapper;
 

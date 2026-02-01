@@ -8,5 +8,6 @@ public record CreateItemDto(
         @NotNull Long itemTypeId,
         @NotNull Long localeId,
         @NotNull Long expansionId,
-        String complement
+        String complement,
+        @NotNull Boolean isCmScrapingActive
 ) {}

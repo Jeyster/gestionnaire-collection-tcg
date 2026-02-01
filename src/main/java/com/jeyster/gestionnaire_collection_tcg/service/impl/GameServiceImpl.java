@@ -53,7 +53,7 @@ public class GameServiceImpl implements GameService {
     public GameDto createGame(CreateGameDto createGameDto) {
         Game game = gameRepository.findByName(createGameDto.name());
         if (game != null) {
-            throw new AlreadyExistingObjectException(game.getName());
+            throw new AlreadyExistingObjectException(game.getName(), true);
         }
         return gameMapper.toDto(gameRepository.save(gameMapper.toEntity(createGameDto)));
     }

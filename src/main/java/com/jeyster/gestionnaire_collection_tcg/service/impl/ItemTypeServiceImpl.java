@@ -33,7 +33,7 @@ public class ItemTypeServiceImpl implements ItemTypeService {
     public ItemTypeDto createItemType(CreateItemTypeDto createItemTypeDto) {
         ItemType itemType = itemTypeRepository.findByName(createItemTypeDto.name());
         if (itemType != null) {
-            throw new AlreadyExistingObjectException(itemType.getName());
+            throw new AlreadyExistingObjectException(itemType.getName(), true);
         }
 
         return itemTypeMapper.toDto(itemTypeRepository.save(itemTypeMapper.toEntity(createItemTypeDto)));
