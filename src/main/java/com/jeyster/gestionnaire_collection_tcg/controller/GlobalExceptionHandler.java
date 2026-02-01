@@ -1,6 +1,7 @@
 package com.jeyster.gestionnaire_collection_tcg.controller;
 
 import com.jeyster.gestionnaire_collection_tcg.exception.AlreadyExistingObjectException;
+import com.jeyster.gestionnaire_collection_tcg.exception.NotExistingObjectException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
@@ -17,5 +18,14 @@ public class GlobalExceptionHandler {
                 ex.getMessage()
         );
         return ResponseEntity.status(HttpStatus.CONFLICT).body(problem);
+    }
+
+    @ExceptionHandler(NotExistingObjectException.class)
+    public ResponseEntity<ProblemDetail> handleAlreadyExists(NotExistingObjectException ex) {
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(
+                HttpStatus.CONFLICT,
+                ex.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(problem);
     }
 }

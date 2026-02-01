@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface LocaleRepository extends JpaRepository<Locale, Long> {
 
+    Locale findByName(String name);
+
     List<Locale> findAllByOrderByName();
 
 }

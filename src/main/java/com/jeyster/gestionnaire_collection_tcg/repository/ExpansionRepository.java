@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface ExpansionRepository extends JpaRepository<Expansion, Long> {
 
+    Expansion findByName(String name);
+
     List<Expansion> findAllByOrderByName();
 
     List<Expansion> findAllByGameIdOrderByName(Long id);

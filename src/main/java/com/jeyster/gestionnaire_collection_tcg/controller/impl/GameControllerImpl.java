@@ -6,6 +6,7 @@ import com.jeyster.gestionnaire_collection_tcg.dto.GameDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemTypeDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateGameDto;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.GameService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,7 +40,7 @@ public class GameControllerImpl implements GameController {
     }
 
     @Override
-    public ResponseEntity<GameDto> createGame(CreateGameDto createGameDto) {
+    public ResponseEntity<GameDto> createGame(@Valid CreateGameDto createGameDto) {
         return ResponseEntity.ok(gameService.createGame(createGameDto));
     }
 }

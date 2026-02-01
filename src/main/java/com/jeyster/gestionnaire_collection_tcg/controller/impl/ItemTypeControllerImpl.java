@@ -4,6 +4,7 @@ import com.jeyster.gestionnaire_collection_tcg.controller.interfaces.ItemTypeCon
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemTypeDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateItemTypeDto;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.ItemTypeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,7 @@ public class ItemTypeControllerImpl implements ItemTypeController {
     }
 
     @Override
-    public ResponseEntity<ItemTypeDto> createItemType(CreateItemTypeDto createItemTypeDto) {
+    public ResponseEntity<ItemTypeDto> createItemType(@Valid CreateItemTypeDto createItemTypeDto) {
         return ResponseEntity.ok(itemTypeService.createItemType(createItemTypeDto));
     }
 }

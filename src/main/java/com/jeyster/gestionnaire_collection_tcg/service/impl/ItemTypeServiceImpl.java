@@ -2,7 +2,9 @@ package com.jeyster.gestionnaire_collection_tcg.service.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.ItemTypeDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateItemTypeDto;
+import com.jeyster.gestionnaire_collection_tcg.exception.AlreadyExistingObjectException;
 import com.jeyster.gestionnaire_collection_tcg.mapper.ItemTypeMapper;
+import com.jeyster.gestionnaire_collection_tcg.model.ItemType;
 import com.jeyster.gestionnaire_collection_tcg.repository.ItemTypeRepository;
 import com.jeyster.gestionnaire_collection_tcg.service.interfaces.ItemTypeService;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +31,11 @@ public class ItemTypeServiceImpl implements ItemTypeService {
 
     @Override
     public ItemTypeDto createItemType(CreateItemTypeDto createItemTypeDto) {
+        ItemType itemType = itemTypeRepository.findByName(createItemTypeDto.name());
+        if (itemType != null) {
+            throw new AlreadyExistingObjectException(itemType.getName());
+        }
+
         return itemTypeMapper.toDto(itemTypeRepository.save(itemTypeMapper.toEntity(createItemTypeDto)));
     }
 }

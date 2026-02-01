@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface ItemTypeRepository extends JpaRepository<ItemType, Long> {
 
+    ItemType findByName(String name);
+
     List<ItemType> findAllByOrderByName();
 
     List<ItemType> findDistinctByItems_Game_IdOrderByName(Long id);

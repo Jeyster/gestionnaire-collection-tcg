@@ -3,6 +3,8 @@ package com.jeyster.gestionnaire_collection_tcg.service.impl;
 import com.jeyster.gestionnaire_collection_tcg.dto.ExpansionDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.GameDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateExpansionDto;
+import com.jeyster.gestionnaire_collection_tcg.exception.AlreadyExistingObjectException;
+import com.jeyster.gestionnaire_collection_tcg.exception.NotExistingObjectException;
 import com.jeyster.gestionnaire_collection_tcg.mapper.ExpansionMapper;
 import com.jeyster.gestionnaire_collection_tcg.mapper.GameMapper;
 import com.jeyster.gestionnaire_collection_tcg.model.Expansion;
@@ -36,12 +38,20 @@ public class ExpansionServiceImpl implements ExpansionService {
 
     @Override
     public ExpansionDto createExpansion(CreateExpansionDto createExpansionDto) {
+        Expansion existingExpansion = expansionRepository.findByName(createExpansionDto.expansionName());
+        if (existingExpansion != null) {
+            throw new AlreadyExistingObjectException(existingExpansion.getName());
+        }
+
         Game game = gameRepository.findById(createExpansionDto.gameId()).orElse(null);
+        if (game == null) {
+            throw new NotExistingObjectException(Game.class.getSimpleName(), createExpansionDto.gameId());
+        }
+
         Expansion expansion = Expansion.builder()
-                .name(createExpansionDto.name())
+                .name(createExpansionDto.expansionName())
                 .game(game)
                 .build();
-
         return expansionMapper.toDto(expansionRepository.save(expansion));
     }
 }
