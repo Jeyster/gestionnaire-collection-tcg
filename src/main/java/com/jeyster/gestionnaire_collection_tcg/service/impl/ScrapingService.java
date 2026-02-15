@@ -19,6 +19,14 @@ public class ScrapingService {
     private volatile boolean running = false;
     private final List<String> logs = new CopyOnWriteArrayList<>();
 
+    /**
+     * Start the scraping of CardMarket website pages for retrieving average prices of {@link com.jeyster.gestionnaire_collection_tcg.model.Item}.
+     * It executes the script "start-scraper-CM.bat" that itself executes a Python script from the following project :
+     * https://github.com/Jeyster/cardmarket-scraper
+     *
+     * An new process is launched and cannot be launched again until done.
+     * Output of Python script are written in the "logs" attribute.
+     */
     public void startScraping() {
         if (running) return;
 

@@ -36,6 +36,15 @@ public class ExpansionServiceImpl implements ExpansionService {
         return expansionMapper.toDto(expansionRepository.findById(id).orElse(null));
     }
 
+    /**
+     * Create an {@link Expansion} from a {@link CreateExpansionDto}.
+     * Throw exception if :
+     *  - expansion name already used -> {@link AlreadyExistingObjectException}
+     *  - expansion game name not in database -> {@link NotExistingObjectException}
+     *
+     * @param createExpansionDto the expansion to create
+     * @return the created expansion
+     */
     @Override
     public ExpansionDto createExpansion(CreateExpansionDto createExpansionDto) {
         Expansion existingExpansion = expansionRepository.findByName(createExpansionDto.expansionName());

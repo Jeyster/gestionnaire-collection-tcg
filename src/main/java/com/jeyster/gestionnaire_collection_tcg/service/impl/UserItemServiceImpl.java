@@ -1,7 +1,10 @@
 package com.jeyster.gestionnaire_collection_tcg.service.impl;
 
 import com.jeyster.gestionnaire_collection_tcg.dto.*;
+import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateItemDto;
 import com.jeyster.gestionnaire_collection_tcg.dto.create.CreateUserItemDto;
+import com.jeyster.gestionnaire_collection_tcg.exception.AlreadyExistingObjectException;
+import com.jeyster.gestionnaire_collection_tcg.exception.NotExistingObjectException;
 import com.jeyster.gestionnaire_collection_tcg.mapper.UserItemMapper;
 import com.jeyster.gestionnaire_collection_tcg.model.Item;
 import com.jeyster.gestionnaire_collection_tcg.model.User;
@@ -55,10 +58,21 @@ public class UserItemServiceImpl implements UserItemService {
         return userItemRepository.count(UserItemSpecifications.withFilters(userId, itemId, false, true));
     }
 
+    /**
+     * Create a {@link UserItem} from a {@link CreateUserItemDto}.
+     * Throw {@link NotExistingObjectException} if user or item are not in database.
+     *
+     * @param createUserItemDto the user item to create
+     * @return the created user item
+     */
     @Override
     public UserItemDto createUserItem(CreateUserItemDto createUserItemDto) {
         User user = userRepository.findById(createUserItemDto.userId()).orElse(null);
         Item item = itemRepository.findById(createUserItemDto.itemId()).orElse(null);
+
+        if (user == null || item == null) {
+            throw new NotExistingObjectException();
+        }
 
         UserItem userItem = new UserItem(
                 user,

@@ -38,6 +38,18 @@ public class UserItemSpecifications {
                 itemId == null ? null : cb.equal(root.get("item").get("id"), itemId);
     }
 
+    /**
+     * Create a JPA {@link Specification} to filters {@link UserItem} that has been sold or not.
+     * Filters created :
+     *  - "sellingPrice is not null" if isSold is true
+     *  - "sellingPrice is null" if isSold is false
+     *
+     * No filter if isOpened is true.
+     *
+     * @param isSold
+     * @param isOpened
+     * @return a {@link Specification} for {@link UserItem} JPA query methods
+     */
     private static Specification<UserItem> isSold(boolean isSold, boolean isOpened) {
         return (root, q, cb) -> {
             if (isOpened) {
@@ -47,6 +59,18 @@ public class UserItemSpecifications {
         };
     }
 
+    /**
+     * Create a JPA {@link Specification} to filters {@link UserItem} that has been opened or not.
+     * Filters created :
+     *  - "sellingPrice is null" and "sellingOrOpeningDate is not null" if isOpened is true
+     *  - "sellingOrOpeningDate is null" if isOpened is false
+     *
+     * No filter if isSold is true.
+     *
+     * @param isOpened
+     * @param isSold
+     * @return a {@link Specification} for {@link UserItem} JPA query methods
+     */
     private static Specification<UserItem> isOpened(boolean isOpened, boolean isSold) {
         return (root, q, cb) -> {
             if (isSold) {
