@@ -11,6 +11,9 @@ public interface ScrapingController {
     @PostMapping("/start")
     ResponseEntity<Void> start();
 
+    @PostMapping("/stop")
+    ResponseEntity<Void> stop();
+
     @GetMapping("/status")
     boolean status();
 

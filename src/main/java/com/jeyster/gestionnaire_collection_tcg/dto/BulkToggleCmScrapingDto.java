@@ -6,5 +6,5 @@ import java.util.List;
 
 public record BulkToggleCmScrapingDto(
         @NotNull boolean isCmScrapingActive,
-        @NotNull List<Long> itemIds
+        List<Long> itemIds
 ) {}

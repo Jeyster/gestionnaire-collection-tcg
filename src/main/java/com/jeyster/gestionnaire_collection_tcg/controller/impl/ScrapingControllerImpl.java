@@ -21,6 +21,12 @@ public class ScrapingControllerImpl implements ScrapingController {
     }
 
     @Override
+    public ResponseEntity<Void> stop() {
+        scrapingService.stopScraping();
+        return ResponseEntity.accepted().build();
+    }
+
+    @Override
     public boolean status() {
         return scrapingService.isRunning();
     }

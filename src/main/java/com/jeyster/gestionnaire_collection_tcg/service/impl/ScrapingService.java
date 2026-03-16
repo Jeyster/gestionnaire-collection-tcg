@@ -1,5 +1,6 @@
 package com.jeyster.gestionnaire_collection_tcg.service.impl;
 
+import com.jeyster.gestionnaire_collection_tcg.model.Item;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,10 @@ public class ScrapingService {
     private volatile boolean running = false;
     private final List<String> logs = new CopyOnWriteArrayList<>();
 
+    private volatile Process process;
+
     /**
-     * Start the scraping of CardMarket website pages for retrieving average prices of {@link com.jeyster.gestionnaire_collection_tcg.model.Item}.
+     * Start the scraping of CardMarket website pages for retrieving average prices of {@link Item}.
      * It executes the script "start-scraper-CM.bat" that itself executes a Python script from the following project :
      * https://github.com/Jeyster/cardmarket-scraper
      *
@@ -47,7 +50,7 @@ public class ScrapingService {
 
                 pb.redirectErrorStream(true);
 
-                Process process = pb.start();
+                process = pb.start();
 
                 try (BufferedReader reader =
                              new BufferedReader(new InputStreamReader(process.getInputStream()))) {
@@ -59,12 +62,21 @@ public class ScrapingService {
                 }
 
                 process.waitFor();
+
             } catch (Exception e) {
                 logs.add("❌ Erreur : " + e.getMessage());
             } finally {
                 running = false;
+                process = null;
             }
         });
     }
 
+    public void stopScraping() {
+        if (process != null && process.isAlive()) {
+            logs.add("🛑 Arrêt du scraping demandé...");
+            process.toHandle().descendants().forEach(ProcessHandle::destroy);
+            process.destroy();
+        }
+    }
 }

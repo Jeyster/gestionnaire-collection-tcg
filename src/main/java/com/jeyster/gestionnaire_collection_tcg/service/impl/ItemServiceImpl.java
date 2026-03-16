@@ -158,14 +158,15 @@ public class ItemServiceImpl implements ItemService {
     /**
      * Set the property isCmScrapingActive of an items list.
      *
-     * @param bulkToggleCmScrapingDto carries the boolean to set and the list of items to modifiy.
+     * @param bulkToggleCmScrapingDto carries the boolean to set and the list of item ids to modifiy.
+     *                                If item ids are null, apply on all items.
      * @return the modified items
      */
     @Override
     public List<ItemDto> bulkToggleCmScraping(BulkToggleCmScrapingDto bulkToggleCmScrapingDto) {
         boolean isCmScrapingActive = bulkToggleCmScrapingDto.isCmScrapingActive();
         List<Long> itemIds = bulkToggleCmScrapingDto.itemIds();
-        List<Item> items = itemRepository.findAllById(itemIds);
+        List<Item> items = itemIds == null ? itemRepository.findAll() : itemRepository.findAllById(itemIds);
 
         items.forEach(item -> item.setIsCmScrapingActive(isCmScrapingActive));
 
